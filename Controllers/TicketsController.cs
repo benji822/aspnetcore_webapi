@@ -3,38 +3,34 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class TicketsController : ControllerBase
     {
         [HttpGet]
-        [Route("api/tickets")]
         public IActionResult Get()
         {
             return Ok("Reading all Tickets");
         }
 
-        [HttpGet]
-        [Route("api/tickets/{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             return Ok($"Reading tickets #{id}");
         }
 
-        [HttpPut]
-        [Route("api/tickets/{id}")]
-        public IActionResult Put(int id)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, string author)
         {
-            return Ok($"Updating Ticket #{id}");
+            return Ok($"Updating Ticket #{id} by {author}");
         }
 
         [HttpPost]
-        [Route("api/tickets")]
         public IActionResult Post()
         {
             return Ok("Create the tickets");
         }
 
-        [HttpDelete]
-        [Route("api/tickets/{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             return Ok($"Ticket {id} was deleted");
