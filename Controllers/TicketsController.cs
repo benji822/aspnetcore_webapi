@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using WebAPI.Models;
 
 namespace WebAPI.Controllers
 {
@@ -25,9 +26,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post()
+        public IActionResult Post([FromBody] TicketsModel ticket)
         {
-            return Ok("Create the tickets");
+            return Ok(ticket);
         }
 
         [HttpDelete("{id}")]
